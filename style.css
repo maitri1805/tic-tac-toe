@@ -1,0 +1,525 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-image: url(background.png);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  display: flex;
+  width: 100%;
+  transition: transform 0.6s ease-in-out;
+}
+.firstpage,
+.secondpage,
+.gamepage {
+  width: 100%;
+  height: 100vh;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+.firstpage {
+  justify-content: center;
+  align-items: center;
+  background-image: url(main_img.png);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+.secondpage {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 80vh;
+  width: 100%;
+}
+
+.letsplaybtn {
+  text-align: center;
+}
+
+.letsplaybtn button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  margin-top: 90vh;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #ffbf00;
+  color: black;
+  min-width: 190px;
+  transition: background 0.3s ease;
+  justify-items: center;
+}
+
+.letsplaybtn button:hover {
+  background-color: #86e9ff;
+  color: black;
+  transform: scale(1.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.backbtn {
+  text-align: left;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 800;
+  background-color: #ffbf00;
+  border: none;
+  border-radius: 8px;
+  color: black;
+  cursor: pointer;
+  margin: 20px 10px;
+  transition: 0.3s;
+  width: fit-content;
+}
+
+.backbtn:hover {
+  background-color: #86e9ff;
+  color: white;
+  transform: scale(1.1);
+}
+
+.name-form {
+  align-self: center;
+  justify-self: center;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 20px 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  color: white;
+  max-width: 400px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 150px 40px;
+  min-height: 300px;
+}
+.name-form h2 {
+  margin: 20px 20px;
+}
+
+.name-form input {
+  padding: 10px;
+  width: 250px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.name-form button {
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 25px;
+}
+
+.name-form button:hover {
+  background-color: #86e9ff;
+}
+.gamepage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+}
+.gamecontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gameinfo {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.gameinfo h1 {
+  font-size: 2.5rem;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  margin-top: 50px;
+}
+.turninfo {
+  display: flex;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin: 30px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.game {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(70px, 10vw));
+  grid-template-rows: repeat(3, minmax(70px, 10vw));
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  gap: 10px;
+}
+.box {
+  display: flex;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  font-size: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+}
+.box:hover {
+  background-color: #0a7dc4;
+}
+.firstpage,
+.secondpage,
+.gamepage {
+  display: none;
+}
+
+.firstpage {
+  display: block;
+}
+#settingsModal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Close button */
+.close {
+  display: flex;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Buttons inside modal */
+.modal-btn {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 18px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal-btn:hover {
+  background-color: #45a049;
+}
+
+/* Settings icon */
+.settings-icon {
+  display: flex;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.game {
+  position: relative;
+}
+
+/* Highlight winning boxes */
+.win {
+  background-color: rgba(255, 255, 0, 0.4);
+  box-shadow: 0 0 12px 5px yellow;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  nsform-origin: left center;
+}
+
+.win {
+  background-color: rgba(255, 255, 0, 0.4);
+  box-shadow: 0 0 12px 5px yellow;
+}
+.box.win {
+  animation: winEffect 1s ease-in-out infinite;
+  background-color: #84f28b !important;
+  border: 3px solid #00ff6a;
+  box-shadow: 0 0 20px #00ff6a;
+}
+
+@keyframes winEffect {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px #00ff6a;
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #00ff6a;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px #00ff6a;
+  }
+}
+
+.winnerpage {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: none;
+
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.winnerbox {
+  background-color: #0a7dc4;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  min-width: 300px;
+  box-shadow: 0 0 20px gold;
+  animation: pulse 1s infinite;
+}
+
+.winner-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 2px 2px 10px #ffcc00;
+}
+
+.winner-name,
+.loser-name {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+.winner-buttons button {
+  padding: 10px 20px;
+  margin: 15px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: #00c853;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.winner-buttons button:hover {
+  transform: scale(1.1);
+  background-color: #ffd600;
+  color: black;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px #ffd700;
+  }
+  50% {
+    box-shadow: 0 0 25px #ffd700;
+  }
+  100% {
+    box-shadow: 0 0 10px #ffd700;
+  }
+}
+.celebrate {
+  font-size: 3rem;
+  text-align: center;
+  animation: popEffect 1s ease-in-out infinite alternate;
+  color: gold;
+  margin-bottom: 20px;
+}
+
+@keyframes backgroundGlow {
+  from {
+    background-color: #222;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  }
+  to {
+    background-color: #333;
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+  }
+}
+
+/*_______________________________________________________________________________________*/
+
+@media (max-width: 1500px) {
+  body {
+    background-size: auto;
+  }
+}
+@media (max-width: 999px) {
+  body {
+    background-image: url("phn_background.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  .firstpage {
+    background-image: url("phn_main_img.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  .letsplaybtn button {
+    margin-top: 80vh;
+  }
+}
+@media (max-width: 768px) {
+  body {
+    background-image: url("phn_background.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  .firstpage {
+    background-image: url("phn_main_img.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  .letsplaybtn button {
+    font-size: 1rem;
+    min-width: 140px;
+    margin-top: 80vh;
+  }
+
+  .backbtn {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+
+  .name-form {
+    width: 90%;
+    padding: 15px;
+    margin: 120px 20px;
+    min-height: 300px;
+  }
+
+  .name-form input {
+    font-size: 0.9rem;
+    margin-top: 20px;
+  }
+  .name-form h2 {
+    padding: 20px 20px;
+  }
+
+  .name-form button {
+    font-size: 1rem;
+    padding: 8px 16px;
+    margin: 30px 30px;
+  }
+  .modal-content {
+    min-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  body,
+  .firstpage {
+    height: 100vh;
+  }
+  .letsplaybtn button {
+    font-size: 0.9rem;
+    margin-top: 80vh;
+    width: fit-content;
+  }
+
+  .name-form {
+    margin: 120px 20px;
+    min-height: 250px;
+    gap: 20px;
+  }
+  .name-form h2 {
+    padding: 20px 20px;
+  }
+
+  .name-form input {
+    padding: 8px;
+    width: auto;
+  }
+  .modal-content {
+    min-width: 250px;
+  }
+}

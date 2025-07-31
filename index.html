@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tic-tac-toe</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <!--<audio id="bgMusic" src="background-music.mp3" ></audio>-->
+        <audio id="clickSound" src="music.mp3"></audio>
+        <div class="firstpage">
+
+            <div class="letsplaybtn">
+                <button onclick="goToGame()">Let's Play</button>
+            </div>
+        </div>
+
+        <div class="secondpage">
+            <button class="backbtn" onclick="goBack()"> &#8592; Back</button>
+            <div class="name-form">
+                <h2>Enter Player Names</h2>
+                <input type="text" id="player1" placeholder="Player 1 " required>
+                <input type="text" id="player2" placeholder="Player 2" required>
+                <button onclick="startGame()">Start Game</button>
+            </div>
+        </div>
+
+        <div class="gamepage">
+            <!--<button class="backbtn" onclick="goBack()"> &#8592; Back</button>-->
+            <div class="settings-icon" onclick="openSettings(event)">⚙️</div>
+
+            <!-- Modal Popup -->
+            <div id="settingsModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeSettings()">❌</span>
+                    <h2>Settings</h2>
+                    <button class="modal-btn" onclick="toggleSound()" id="soundToggleBtn">🔊 Sound On</button>
+
+                    <button class="modal-btn" onclick="restartGame()">🔁 Restart</button>
+                    <button class="modal-btn" onclick="goHome()">🏠 Home</button>
+                </div>
+            </div>
+            <div class="gameinfo">
+                <h1>Welcome Tic Tac Toe</h1>
+            </div>
+            <div id="turnInfo" class="turninfo">Turn: Player 1 (abc)</div>
+
+            <div class="gamecontainer">
+
+                <div class="game">
+                    <div class="box"><span class="boxtext"></span></div>
+                    <div class="box"><span class="boxtext"></span></div>
+                    <div class="box"><span class="boxtext"></span></div>
+                    <div class="box"><span class="boxtext"></span></div>
+                    <div class="box"><span class="boxtext"></span></div>
+                    <div class="box"><span class="boxtext"></span></div>
+                    <div class="box"><span class="boxtext"></span></div>
+                    <div class="box"><span class="boxtext"></span></div>
+                    <div class="box"><span class="boxtext"></span></div>
+                </div>
+            </div>
+        </div>
+        <!-- Winner Modal Page -->
+        <div class="winnerpage" id="winnerpage">
+            <div class="winnerbox">
+
+                <h1 class="winner-title">Tic Tac Toe 🎉</h1>
+                <p class="winner-name" id="winnerMessage">
+                    Winner: <span id="winnerName">Player 1</span>
+                </p>
+
+                <p class="loser-name">Loser: <span id="loserName">Player 2</span></p>
+
+                <div class="winner-buttons">
+                    <button onclick="restartGameFromWinner()">🔁 Restart</button>
+                    <button onclick="closewinner()">❌ Exit</button>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+</body>
+
+</html>
